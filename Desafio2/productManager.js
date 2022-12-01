@@ -73,7 +73,13 @@ class ProductManager {
         
         const productsFiltered = productsList.filter((product) => id != product.id)
 
-        await this.write(productsFiltered)
+        if (!productsFiltered) {
+            await this.write(productsFiltered)
+            console.log('Product deleted');
+        } else {
+            console.log('There is no product with this ID');
+        }
+
     }
 }
 
